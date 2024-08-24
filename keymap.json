@@ -1,0 +1,51 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run zed: open default keymap
+// from the command palette.
+[
+    {
+        "context": "Workspace",
+        "bindings": {
+            "shift shift": "file_finder::Toggle",
+            "alt-g": [
+                "task::Spawn",
+                { "task_name": "echo current file's path" }
+            ]
+        }
+    },
+    {
+        "context": "Editor && vim_mode == normal",
+        "bindings": {
+            "alt-a": "editor::SelectAll",
+            "space w": "workspace::Save",
+            "space q": "pane::CloseActiveItem",
+            "space e": "workspace::ToggleRightDock",
+            "space x": "workspace::ToggleLeftDock"
+        }
+    },
+    {
+        "context": "ProjectPanel",
+        "bindings": {
+            "space e": "workspace::ToggleRightDock",
+            "a": "project_panel::NewFile",
+            "f": "project_panel::NewDirectory"
+        }
+    },
+    {
+        "context": "Editor && vim_mode == insert",
+        "bindings": {
+            "j k": ["workspace::SendKeystrokes", "escape"]
+        }
+    },
+    {
+        "context": "Terminal",
+        "bindings": {
+            "super-k": "terminal::Clear",
+            "ctrl-j": "terminal::ScrollLineUp",
+            "ctrl-k": "terminal::ScrollLineDown"
+        }
+    }
+]
