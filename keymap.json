@@ -1,51 +1,136 @@
-// Zed keymap
-//
-// For information on binding keys, see the Zed
-// documentation: https://zed.dev/docs/key-bindings
-//
-// To see the default key bindings run zed: open default keymap
-// from the command palette.
 [
-    {
-        "context": "Workspace",
-        "bindings": {
-            "shift shift": "file_finder::Toggle",
-            "alt-g": [
-                "task::Spawn",
-                { "task_name": "echo current file's path" }
-            ]
+  // {
+  //   "context": "Editor || Workspace",
+  //   "bindings": {
+  //     "ctrl-x": "pane::CloseActiveItem"
+  //   }
+  // },
+
+  // {
+  //   "context": "Workspace",
+  //   "bindings": {
+  //     "ctrl-;": "workspace::ToggleBottomDock"
+  //   }
+  // },
+
+  {
+    "context": "EmptyPane || SharedScreen || vim_mode == normal",
+    "bindings": {
+      // ", f b": "tab_switcher::Toggle",
+      ", f b": ["file_finder::Toggle", { "separate_history": true }],
+      ", f i": "file_finder::Toggle",
+      ", f o": "projects::OpenRecent",
+      ", r l": "task::Rerun",
+      ", r e": [
+        "task::Rerun",
+        {
+          "reevaluate_context": true
         }
-    },
-    {
-        "context": "Editor && vim_mode == normal",
-        "bindings": {
-            "alt-a": "editor::SelectAll",
-            "space w": "workspace::Save",
-            "space q": "pane::CloseActiveItem",
-            "space e": "workspace::ToggleRightDock",
-            "space x": "workspace::ToggleLeftDock"
-        }
-    },
-    {
-        "context": "ProjectPanel",
-        "bindings": {
-            "space e": "workspace::ToggleRightDock",
-            "a": "project_panel::NewFile",
-            "f": "project_panel::NewDirectory"
-        }
-    },
-    {
-        "context": "Editor && vim_mode == insert",
-        "bindings": {
-            "j k": ["workspace::SendKeystrokes", "escape"]
-        }
-    },
-    {
-        "context": "Terminal",
-        "bindings": {
-            "super-k": "terminal::Clear",
-            "ctrl-j": "terminal::ScrollLineUp",
-            "ctrl-k": "terminal::ScrollLineDown"
-        }
+      ],
+      "ctrl-shift-o": "projects::OpenRecent"
     }
+  },
+  {
+    "context": "Editor && VimControl && !VimWaiting && !menu",
+    "bindings": {
+      "ctrl-w z": "workspace::ToggleZoom",
+      "ctrl-w t": "terminal_panel::ToggleFocus",
+      // "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
+      "cmd-shift-k": "editor::DeleteLine",
+      // "1 g shift-d": "editor::GoToImplementation",
+      "g ]": "editor::GoToDiagnostic",
+      "g [": "editor::GoToPrevDiagnostic",
+      "g shift-r": "editor::FindAllReferences",
+      "shift-k": "editor::Hover",
+      "g a": "editor::ToggleCodeActions",
+      "g r": "editor::Rename",
+      "[ x": "editor::SelectLargerSyntaxNode",
+      "] x": "editor::SelectSmallerSyntaxNode",
+      "space w": "workspace::Save",
+      "j": [
+        "vim::Down",
+        {
+          "displayLines": true
+        }
+      ],
+      "k": [
+        "vim::Up",
+        {
+          "displayLines": true
+        }
+      ],
+      ", g b": "editor::ToggleGitBlame"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal && !VimWaiting && !VimCount",
+    "bindings": {
+      "alt-a": "editor::SelectAll",
+      "space w": "workspace::Save",
+      "space q": "pane::CloseActiveItem",
+      "space e": "workspace::ToggleRightDock",
+      "space x": "workspace::ToggleLeftDock",
+      "0": [
+        "vim::StartOfLine",
+        {
+          "displayLines": true
+        }
+      ],
+      "$": [
+        "vim::EndOfLine",
+        {
+          "displayLines": true
+        }
+      ]
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      "g c c": "editor::ToggleComments"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == visual",
+    "bindings": {
+      "g c": "editor::ToggleComments"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-b z": "workspace::ToggleZoom",
+      "ctrl-u": "terminal::Clear",
+      "alt-j": "terminal::ScrollLineUp",
+      "alt-k": "terminal::ScrollLineDown"
+    }
+  },
+  {
+    "context": "Dock",
+    "bindings": {
+      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"]
+    }
+  },
+  {
+    "context": "ProjectPanel",
+    "bindings": {
+      "space e": "workspace::ToggleRightDock",
+      "ctrl-a": "project_panel::NewFile",
+      "ctrl-f": "project_panel::NewDirectory",
+      "ctrl-d": "project_panel::Delete"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      "j k": ["workspace::SendKeystrokes", "escape"]
+    }
+  }
 ]
+
